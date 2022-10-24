@@ -4,11 +4,11 @@
 
 
 # Configuration directories and files
-SourceDirectory: C:/Users/George/Documents/Stynt/ITK Source
-BuildDirectory: C:/Users/George/Documents/Stynt/ITK Binaries
+SourceDirectory: C:/Program Files/Stynt/ITK Source
+BuildDirectory: C:/Program Files/Stynt/ITK Binaries
 
 # Where to place the cost data store
-CostDataFile: 
+CostDataFile: C:/Program Files/Stynt/ITK Binaries/test_cost.list
 
 # Site is something like machine.domain, i.e. pragmatic.crd
 Site: DESKTOP-IKBEHDT
@@ -27,7 +27,7 @@ SubmitInactivityTimeout:
 NightlyStartTime: 1:00:00 UTC
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "C:/Program Files/CMake/bin/cmake.exe" "C:/Users/George/Documents/Stynt/ITK Source"
+ConfigureCommand: "C:/Program Files/CMake/bin/cmake.exe" "C:/Program Files/Stynt/ITK Source"
 MakeCommand: "C:\Program Files\CMake\bin\cmake.exe" --build . --config "${CTEST_CONFIGURATION_TYPE}"
 DefaultCTestConfigurationType: Release
 
@@ -45,7 +45,7 @@ SVNOptions:
 SVNUpdateOptions: 
 
 # Git options
-GITCommand: 
+GITCommand: GITCOMMAND-NOTFOUND
 GITInitSubmodules: 
 GITUpdateOptions: 
 GITUpdateCustom: 

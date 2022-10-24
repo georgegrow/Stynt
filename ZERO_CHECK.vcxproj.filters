@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <CustomBuild Include="C:\Users\George\Documents\Stynt\ITK Binaries\CMakeFiles\255fc7cf04b2448cd3cbefe52c9fd2c6\generate.stamp.rule">
+    <CustomBuild Include="C:\Program Files\Stynt\ITK Binaries\CMakeFiles\9bd87826acd2bac24bb95dbb2886a508\generate.stamp.rule">
       <Filter>CMake Rules</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="CMake Rules">
-      <UniqueIdentifier>{D571DFEC-7DA7-33AC-ABBC-8731E37672D1}</UniqueIdentifier>
+      <UniqueIdentifier>{DE95D05B-A144-33CA-B4B8-916D948DBD4A}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

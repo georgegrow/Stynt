@@ -15,7 +15,7 @@
 # See `itk_module_config()` documentation for more information about factory modules.
 
 
-set(ITK_MODULES_DIR "C:/Users/George/Documents/Stynt/ITK Binaries/lib/cmake/ITK-5.2/Modules")
+set(ITK_MODULES_DIR "C:/Program Files/Stynt/ITK Binaries/lib/cmake/ITK-5.2/Modules")
 
 # The C and C++ flags added by ITK to the cmake-configured flags.
 set(ITK_REQUIRED_C_FLAGS "")
@@ -40,10 +40,10 @@ set(ITK_LEGACY_SILENT "OFF")
 set(ITK_FUTURE_LEGACY_REMOVE "OFF")
 
 # ITK's CMake directory with modules ITK uses.
-set(ITK_CMAKE_DIR "C:/Users/George/Documents/Stynt/ITK Source/CMake")
+set(ITK_CMAKE_DIR "C:/Program Files/Stynt/ITK Source/CMake")
 
 # The location of the UseITK.cmake file.
-set(ITK_USE_FILE "C:/Users/George/Documents/Stynt/ITK Source/CMake/UseITK.cmake")
+set(ITK_USE_FILE "C:/Program Files/Stynt/ITK Source/CMake/UseITK.cmake")
 
 # Whether ITK was built with shared libraries.
 set(ITK_BUILD_SHARED "OFF")
@@ -58,17 +58,17 @@ set(ITK_BUILD_EXAMPLES "ON")
 set(ITK_BUILD_DOCUMENTATION "OFF")
 
 # List of available ITK modules.
-set(ITK_MODULES_ENABLED "ITKDoubleConversion;ITKEigen3;ITKKWIML;ITKKWSys;ITKVNL;ITKVNLInstantiation;ITKCommon;ITKFiniteDifference;ITKImageFilterBase;ITKCurvatureFlow;ITKImageAdaptors;ITKNetlib;ITKStatistics;ITKTransform;ITKImageFunction;ITKImageGrid;ITKAnisotropicSmoothing;ITKImageCompose;ITKMesh;ITKZLIB;ITKMetaIO;ITKSpatialObjects;ITKImageStatistics;ITKPath;ITKImageIntensity;ITKImageLabel;ITKLabelMap;ITKThresholding;ITKConnectedComponents;ITKMathematicalMorphology;ITKBinaryMathematicalMorphology;ITKNarrowBand;ITKDistanceMap;ITKQuadEdgeMesh;ITKFastMarching;ITKIOImageBase;ITKImageCompare;ITKSmoothing;ITKImageGradient;ITKImageSources;ITKImageFeature;ITKOptimizers;ITKSignedDistanceFunction;ITKLevelSets;ITKAntiAlias;ITKPolynomials;ITKBiasCorrection;ITKClassifiers;ITKColormap;ITKFFT;ITKConvolution;ITKDICOMParser;ITKDeconvolution;ITKDeformableMesh;ITKDenoising;ITKDiffusionTensorImage;ITKDisplacementField;ITKEigen;ITKExpat;ITKGDCM;ITKNIFTI;ITKGIFTI;ITKGPUCommon;ITKGPUFiniteDifference;ITKGPUAnisotropicSmoothing;ITKGPUImageFilterBase;ITKGPURegistrationCommon;ITKRegistrationCommon;ITKPDEDeformableRegistration;ITKGPUPDEDeformableRegistration;ITKGPUSmoothing;ITKGPUThresholding;ITKGoogleTest;ITKHDF5;ITKIOBMP;ITKIOBioRad;ITKIOBruker;ITKIOCSV;ITKIOGDCM;ITKIOIPL;ITKIOGE;ITKIOGIPL;ITKIOHDF5;ITKJPEG;ITKIOJPEG;ITKOpenJPEG;ITKIOJPEG2000;ITKTIFF;ITKIOTIFF;ITKIOLSM;ITKMINC;ITKIOMINC;ITKIOMRC;ITKVoronoi;ITKIOMeshBase;ITKIOMeshBYU;ITKIOMeshFreeSurfer;ITKIOMeshGifti;ITKIOMeshOBJ;ITKIOMeshOFF;ITKIOMeshVTK;ITKIOMesh;ITKIOMeta;ITKIONIFTI;ITKNrrdIO;ITKIONRRD;ITKPNG;ITKIOPNG;ITKIORAW;ITKIOSiemens;ITKIOXML;ITKIOSpatialObjects;ITKIOStimulate;ITKTransformFactory;ITKIOTransformBase;ITKIOTransformHDF5;ITKIOTransformInsightLegacy;ITKIOTransformMatlab;ITKIOVTK;ITKImageFrequency;ITKImageFusion;ITKImageNoise;ITKIntegratedTest;ITKKLMRegionGrowing;ITKLIBLBFGS;ITKLabelVoting;ITKLevelSetsv4;ITKMarkovRandomFieldsClassifiers;ITKOptimizersv4;ITKMetricsv4;ITKQuadEdgeMeshFiltering;ITKRegionGrowing;ITKRegistrationMethodsv4;ITKSpatialFunction;ITKSuperPixel;ITKTestKernel;ITKVTK;ITKVideoCore;ITKVideoFiltering;ITKVideoIO;ITKWatersheds")
+set(ITK_MODULES_ENABLED "ITKDoubleConversion;ITKEigen3;ITKKWIML;ITKKWSys;ITKVNL;ITKVNLInstantiation;ITKCommon;ITKFiniteDifference;ITKImageFilterBase;ITKCurvatureFlow;ITKImageAdaptors;ITKNetlib;ITKStatistics;ITKTransform;ITKImageFunction;ITKImageGrid;ITKAnisotropicSmoothing;ITKIOImageBase;ITKIOBMP;ITKExpat;ITKZLIB;ITKGDCM;ITKIOGDCM;ITKIOGIPL;ITKJPEG;ITKIOJPEG;ITKMesh;ITKQuadEdgeMesh;ITKVoronoi;ITKIOMeshBase;ITKIOMeshBYU;ITKIOMeshFreeSurfer;ITKNIFTI;ITKGIFTI;ITKIOMeshGifti;ITKIOMeshOBJ;ITKIOMeshOFF;ITKIOMeshVTK;ITKMetaIO;ITKIOMeta;ITKIONIFTI;ITKNrrdIO;ITKIONRRD;ITKPNG;ITKIOPNG;ITKTIFF;ITKIOTIFF;ITKIOVTK;ITKTestKernel;ITKImageCompose;ITKSpatialObjects;ITKImageStatistics;ITKPath;ITKImageIntensity;ITKImageLabel;ITKLabelMap;ITKThresholding;ITKConnectedComponents;ITKMathematicalMorphology;ITKBinaryMathematicalMorphology;ITKNarrowBand;ITKDistanceMap;ITKFastMarching;ITKImageCompare;ITKSmoothing;ITKImageGradient;ITKImageSources;ITKImageFeature;ITKOptimizers;ITKSignedDistanceFunction;ITKLevelSets;ITKAntiAlias;ITKPolynomials;ITKBiasCorrection;ITKClassifiers;ITKColormap;ITKFFT;ITKConvolution;ITKDICOMParser;ITKDeconvolution;ITKDeformableMesh;ITKDenoising;ITKDiffusionTensorImage;ITKDisplacementField;ITKEigen;ITKIOMesh;ITKGPUCommon;ITKGPUFiniteDifference;ITKGPUAnisotropicSmoothing;ITKGPUImageFilterBase;ITKGPURegistrationCommon;ITKRegistrationCommon;ITKPDEDeformableRegistration;ITKGPUPDEDeformableRegistration;ITKGPUSmoothing;ITKGPUThresholding;ITKGoogleTest;ITKHDF5;ITKIOBioRad;ITKIOBruker;ITKIOCSV;ITKIOIPL;ITKIOGE;ITKIOSiemens;ITKIOHDF5;ITKOpenJPEG;ITKIOJPEG2000;ITKIOLSM;ITKMINC;ITKIOMINC;ITKIOMRC;ITKIORAW;ITKIOXML;ITKIOSpatialObjects;ITKIOStimulate;ITKTransformFactory;ITKIOTransformBase;ITKIOTransformHDF5;ITKIOTransformInsightLegacy;ITKIOTransformMatlab;ITKImageFrequency;ITKImageFusion;ITKImageNoise;ITKIntegratedTest;ITKKLMRegionGrowing;ITKLabelVoting;ITKMarkovRandomFieldsClassifiers;ITKQuadEdgeMeshFiltering;ITKRegionGrowing;ITKSpatialFunction;ITKVTK;ITKWatersheds;ITKLIBLBFGS;ITKLevelSetsv4;ITKOptimizersv4;ITKMetricsv4;ITKRegistrationMethodsv4;ITKSuperPixel;ITKVideoCore;ITKVideoIO;ITKVideoFiltering")
 
 # Import ITK targets.
-set(ITK_CONFIG_TARGETS_FILE "C:/Users/George/Documents/Stynt/ITK Binaries/ITKTargets.cmake")
+set(ITK_CONFIG_TARGETS_FILE "C:/Program Files/Stynt/ITK Binaries/ITKTargets.cmake")
 if(NOT ITK_TARGETS_IMPORTED AND NOT ITK_BINARY_DIR)
   set(ITK_TARGETS_IMPORTED 1)
   include("${ITK_CONFIG_TARGETS_FILE}")
 endif()
 
 # Load module interface macros.
-include("C:/Users/George/Documents/Stynt/ITK Source/CMake/ITKModuleAPI.cmake")
+include("C:/Program Files/Stynt/ITK Source/CMake/ITKModuleAPI.cmake")
 # Load requested modules and their dependencies into variables:
 #  ITK_LIBRARIES       = Libraries to link
 #  ITK_INCLUDE_DIRS    = Header file search path
