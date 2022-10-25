@@ -12,7 +12,7 @@
 * Authored by George Grow 101022
 * Edited by George Grow on 211022
 * Edited by George Grow on 231022
-* Edited by George Grow on 241022
+* Edited by George Grow on 241022: filter & measure test1 data
 * 
 * =======================================================================*/
 
@@ -25,24 +25,20 @@
 #include "itkGDCMSeriesFileNames.h"
 #include "itkImageSeriesReader.h"
 #include "itkImageFileWriter.h"
-
-
+#include "itkImageFileReader.h"
+#include "itkExtractImageFilter.h"
 
 int
 main(int argc, char* argv[])
 {
-    // If slices are less than 3, the program will enter failure and exit
-    
+    // If input arguments are less than 3, the program will enter failure and exit
     if (argc < 3)
     {
-        std::cerr << "Usage: " << std::endl;
-        std::cerr << argv[0] << " DicomDirectory  outputFileName  [seriesName]"
-            << std::endl;
-        
+        std::cerr << std::endl;
+        std::cerr << "Input Arguments Needed: 1.ExecutableName 2.DicomDirectory  3.outputFileName" << std::endl;
         return EXIT_FAILURE;
     }
     
-
     // Define pixel type and dimension & assigning to the image type
     using PixelType = unsigned short;
     constexpr unsigned int Dimension = 3;
@@ -83,6 +79,7 @@ main(int argc, char* argv[])
 
         const SeriesIdContainer& seriesUID = nameGenerator->GetSeriesUIDs();
 
+
         auto seriesItr = seriesUID.begin();
         auto seriesEnd = seriesUID.end();
         while (seriesItr != seriesEnd)
@@ -102,10 +99,14 @@ main(int argc, char* argv[])
         {
             try
             {
+                //typecasts & saves the file as .png
+                std::string filecountString = std::to_string(filecount);
+                std::string filetype(".dcm");
+               
                 // Puts series identifier into a string and reads the series
                 seriesIdentifier = seriesItr2->c_str();
                 std::cout << std::endl << std::endl;
-                std::cout << "Now reading series: " << std::endl << std::endl;
+                std::cout << "Now saving series: " << std::endl << std::endl;
                 std::cout << seriesIdentifier << std::endl;
                 std::cout << std::endl << std::endl;
 
@@ -117,31 +118,26 @@ main(int argc, char* argv[])
 
                 //Passes the file to the reader
                 reader->SetFileNames(fileNames);
-
-                
-                
-                /* Reading process is commented out because every series does not
-                * want to execute
-                * 
+               
                 // Reading process is triggered
-                try
+                if (filecount == 1)
                 {
-                    reader->Update();
-                }
-                catch (const itk::ExceptionObject& ex)
-                {
-                    std::cout << ex << std::endl;
-                    return EXIT_FAILURE;
-                }
-                */
+                    try
+                    {
+                        reader->Update();
+                        // NOTE: instead of writing to a file, add a 3D processing pipeline here
 
-                //Volumetric image in memory is now saved as a separate file
+                    }
+                    catch (const itk::ExceptionObject& ex)
+                    {
+                        std::cout << ex << std::endl;
+                        return EXIT_FAILURE;
+                    }
+                }
+                
+                //Volumetric image in memory (only for test1) is now saved as a separate file
                 using WriterType = itk::ImageFileWriter<ImageType>;
                 WriterType::Pointer writer = WriterType::New();
-
-                //typecasts & saves the file as .png
-                std::string filecountString = std::to_string(filecount);
-                std::string filetype(".png");
 
                 writer->SetFileName(argv[2] + filecountString + filetype);
 
@@ -154,7 +150,7 @@ main(int argc, char* argv[])
                 ++seriesItr2;
                 ++filecount;
 
-                //Exlicitly updating the writer
+                //Explicitly updating the writer
                 try
                 {
                     writer->Update();
@@ -164,6 +160,7 @@ main(int argc, char* argv[])
                     std::cout << ex << std::endl;
                     return EXIT_FAILURE;
                 }
+                
             }
             catch (const itk::ExceptionObject& ex)
             {
@@ -177,13 +174,69 @@ main(int argc, char* argv[])
         std::cout << ex << std::endl;
         return EXIT_FAILURE;
     }
+    
+    
+    // Setting type of the output slice and setting up writer
+    using InputPixelType = unsigned short;
+    using OutputPixelType = unsigned short;
+    using InputImageType = itk::Image<InputPixelType, 3>;
+    using OutputImageType = itk::Image<OutputPixelType, 2>;
+
+    using ReaderTypeSlice = itk::ImageFileReader<InputImageType>;
+    using WriterTypeSlice = itk::ImageFileWriter<OutputImageType>;
+
+    ReaderTypeSlice::Pointer sliceReader = ReaderTypeSlice::New();
+    WriterTypeSlice::Pointer sliceWriter = WriterTypeSlice::New();
+
+    //sets the file name
+    const char* outputFilename = "testSlice.png";
+    const char* inputFilename = "test1.dcm";
+
+    sliceReader->SetFileName(inputFilename);
+    sliceWriter->SetFileName(outputFilename);
+    
 
 
-    // NOTE: instead of writing to a file, add a 3D processing pipeline here
+    //Adding filter
+    using FilterType = itk::ExtractImageFilter<InputImageType, OutputImageType>;
+    FilterType::Pointer filter = FilterType::New();
+    filter->InPlaceOn();
+    filter->SetDirectionCollapseToSubmatrix();
 
+    // Setting the region and size
+    sliceReader->UpdateOutputInformation();
+    InputImageType::RegionType inputRegion =
+        sliceReader->GetOutput()->GetLargestPossibleRegion();
+
+    InputImageType::SizeType size = inputRegion.GetSize();
+    size[2] = 0;
+
+    InputImageType::IndexType start = inputRegion.GetIndex();
+    const unsigned int sliceNumber = 1;
+    start[2] = sliceNumber;
+
+    InputImageType::RegionType desiredRegion;
+    desiredRegion.SetSize(size);
+    desiredRegion.SetIndex(start);
+
+    filter->SetExtractionRegion(desiredRegion);
+
+    filter->SetInput(sliceReader->GetOutput());
+    sliceWriter->SetInput(filter->GetOutput());
+
+    try
+    {
+        sliceWriter->Update();
+    }
+    catch (const itk::ExceptionObject& err)
+    {
+        std::cerr << "ExceptionObject caught !" << std::endl;
+        std::cerr << err << std::endl;
+        return EXIT_FAILURE;
+    }
+    
+    
     // NOTE: add Solidworks API and iterative loop to produce 3D model
-
-
 
     return EXIT_SUCCESS;
 
